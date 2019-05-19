@@ -133,6 +133,14 @@ class Partner < ApplicationRecord
     partner_status.casecmp("pending").zero?
   end
 
+  def valid_password?(password)
+    if ::Rails.env.development?
+      true
+    else
+      super
+    end
+  end
+
   private
 
   def expose_attachment_path(documentation)
@@ -156,13 +164,5 @@ class Partner < ApplicationRecord
       list.push(document_link: Rails.application.routes.url_helpers.rails_blob_path(doc, only_path: true))
     end
     list
-  end
-
-  def valid_password?(password)
-    if ::Rails.env.development?
-      true
-    else
-      super
-    end
   end
 end
