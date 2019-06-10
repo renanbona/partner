@@ -21,7 +21,7 @@
       <div class="col-12">
         <div class="card mb-12">
           <h5 class="card-header bg-primary text-white">Family Information
-            <%= link_to 'Add Child To This Family', new_child_path(family_id: family.id), class: "btn btn-sm btn-warning pull-right" %></h5>
+            <%= link_to t('buttons.new_child'), new_child_path(family_id: family.id), class: "btn btn-sm btn-warning pull-right" %></h5>
           <div class="card-body">
             <dl>
               <dt>Guardian first name:</dt>
@@ -72,7 +72,7 @@
 
             <%= link_to 'Edit This Family', edit_family_path(family), class: "btn btn-sm btn-primary" %>
             <%= link_to 'Back to Families', families_path, class: "btn btn-sm btn-info pull-right" %>
-            <%= link_to 'Add Child To This Family', new_child_path(family_id: family.id), class: "btn btn-sm btn-success" %>
+            <%= link_to t('buttons.new_child'), new_child_path(family_id: family.id), class: "btn btn-sm btn-success" %>
           </div>
         </div>
       </div>

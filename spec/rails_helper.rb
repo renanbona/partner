@@ -107,4 +107,6 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers,  type: :controller
   config.extend ControllerMacros, type: :controller
   config.include FactoryBot::Syntax::Methods
+  config.include I18nMacros
+  config.include StubsHelper
 end

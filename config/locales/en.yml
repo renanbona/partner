@@ -33,3 +33,10 @@ en:
   hello: "Hello world"
   :true: 'Yes'
   :false: 'No'
+  buttons:
+    new_child: Add Child To This Family
+    create_child: Create Child
+    view_family: View Family
+  labels:
+    new_child: New Child
+    families: Families
