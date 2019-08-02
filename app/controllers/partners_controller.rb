@@ -1,6 +1,6 @@
 class PartnersController < ApplicationController
   before_action :set_partner, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_partner!
+  before_action :authenticate_user!
 
   def index
     @partners = Partner.all
@@ -8,10 +8,6 @@ class PartnersController < ApplicationController
   end
 
   def show; end
-
-  def new
-    @partner = Partner.new
-  end
 
   def edit; end
 
@@ -21,38 +17,17 @@ class PartnersController < ApplicationController
     redirect_to @partner, notice: "You have submitted your details for approval."
   end
 
-  def create
-    @partner = Partner.new(partner_params)
-
-    respond_to do |format|
-      if @partner.save
-        format.html { redirect_to @partner, notice: "Partner was successfully created." }
-        format.json { render :show, status: :created, location: @partner }
-      else
-        format.html { render :new }
-        format.json { render json: @partner.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   def update
-    respond_to do |format|
-      if @partner.update(partner_params)
-        format.html { redirect_to @partner, notice: "Details were successfully updated." }
-        format.json { render :show, status: :ok, location: @partner }
-      else
-        format.html { render :edit }
-        format.json { render json: @partner.errors, status: :unprocessable_entity }
-      end
+    if @partner.update(partner_params)
+      redirect_to @partner, notice: "Details were successfully updated."
+    else
+      render :edit
     end
   end
 
   def destroy
     @partner.destroy
-    respond_to do |format|
-      format.html { redirect_to partners_url, notice: "Partner was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to partners_url, notice: "Partner was successfully destroyed."
   end
 
   private
@@ -141,9 +116,5 @@ class PartnersController < ApplicationController
       :diaper_funding_source,
       documents: []
     )
-  end
-
-  def pundit_user
-    current_partner
   end
 end

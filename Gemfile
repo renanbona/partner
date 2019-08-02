@@ -16,7 +16,6 @@ gem "puma", "~> 3.11"
 gem "pundit", "~> 2.0.0"
 gem "rails", "~> 5.2.1"
 gem "sass-rails", "~> 5.0"
-gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
 group :development, :test do
@@ -33,6 +32,7 @@ group :development, :test do
   gem "pry-remote"
   gem "rspec-rails", "~> 3.5"
   gem "rubocop"
+  gem "simplecov", require: false
 end
 
 group :development do

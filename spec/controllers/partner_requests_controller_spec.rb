@@ -3,7 +3,8 @@ require "rails_helper"
 describe PartnerRequestsController, type: :controller do
   context "when authenticated" do
     context "when approved" do
-      login_partner(partner_status: "Verified")
+      login_user(partner_status: "verified")
+
       describe "GET #new" do
         it "returns http success" do
           # NOTE(chaserx): curious that this stub is required here and not
@@ -31,7 +32,7 @@ describe PartnerRequestsController, type: :controller do
     end
 
     context "when pending" do
-      login_partner
+      login_user
       describe "GET #new" do
         it "returns http success" do
           get :new

@@ -28,13 +28,19 @@ the partner gets an email notification stating their pick up date and a pdf copy
 
 ## Development
 
+There are detailed instructions for installation on Ubuntu hosts in the [ubuntu-installation.md](ubuntu-installation.md) file. As of now, there are no detailed instructions for Mac installation, but if you have any problems, the Ubuntu file may shed some light on them.
+
 ### Ruby Version
-This app uses Ruby version 2.5.3, indicated in `/.ruby-version` and `Gemfile`, which will be auto-selected if you use a Ruby versioning manager like `rvm` or `rbenv`.
+
+This app uses Ruby version 2.6.2, indicated in `/.ruby-version` and `Gemfile`, which will be auto-selected if you use a Ruby versioning manager like `rvm` or `rbenv`.
 
 ### Database Configuration
+
 This app uses PostgreSQL for all environments. You'll also need to create the `dev` and `test` databases, the app is expecting them to be named `partner_dev` and `partner_test`, respectively. This should all be handled with `bundle exec rails db:setup`.
 
+
 ### Create your .env with database credentials
+
 Be sure to create a `.env` file in the root of the app that includes the following lines (change to whatever is appropriate for your system):
 ```
 PG_USERNAME=username
@@ -49,8 +55,13 @@ than the default of `localhost`:
 PG_HOST=hostname
 ```
 
+
 ## Seed the database
+
 From the root of the app, run `bundle exec rails db:seed`. This will create some initial data to use while testing the app and developing new features, including setting up the default user.
+
+
+## Logging In
 
 To login, use these default credentials provided in the seeds:
 
@@ -59,7 +70,15 @@ To login, use these default credentials provided in the seeds:
       Password: password
 
     Pending Organization
-      Email: unverifed@example.com
+      Email: unverified@example.com
       Password: password
 
+### Testing
 
+Run all the tests with:
+
+  `bundle exec rspec`            
+
+This app uses RSpec, Capybara, and FactoryBot for testing. Make sure the tests run clean & green before submitting a Pull Request. If you are inexperienced in writing tests or get stuck on one, please reach out so one of us can help you. :)
+
+The one situation where you probably don't need to write new tests is when simple re-stylings are done (ie. the page may look slightly different but the Test suite is unaffected by those changes).
