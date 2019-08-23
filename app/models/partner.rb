@@ -228,6 +228,14 @@ class Partner < ApplicationRecord
     ACTIVE_FAMILY_REQUESTS.include?(diaper_bank_id)
   end
 
+  def valid_password?(password)
+    if ::Rails.env.development?
+      true
+    else
+      super
+    end
+  end
+
   private
 
   def expose_attachment_path(documentation)
